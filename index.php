@@ -1,7 +1,7 @@
 <?php
 require 'inc/Database.php';
 require 'inc/routes.php';
-require 'models/Stats.php';
+//require 'models/Stats.php';
 
  ?>
 
@@ -15,29 +15,43 @@ require 'models/Stats.php';
     <meta name="description" content="Bienvenue dans mon site Web ! ">
     <title>BAH Mamadou</title>
 
-    <link rel="stylesheet" href="assets/css/f1_style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-<?php require_once 'static/nav.php'; ?>;
+<?php require_once 'static/header.php'; ?>
 
 <main>
   <?php
-    $pageName = "Stats";
-    $controller = $routes[$pageName]['controller'];
-    $template = $routes[$pageName]['template'];
+    $page = isset($_GET['page']) ? $_GET['page'] : 'Home' ;
 
-    require ('controllers/'.$controller.'.php');
-    require ('templates/'.$template.'.php');
+    if(isset($routes[$page])) {
+      //$controller = $routes[$pageName]['controller'];
+      $template = $routes[$page]['template'];
+
+      //require ('controllers/'.$controller.'.php');
+      require ('templates/'.$template.'.php');
+      require ('templates/popup.php');
+    }
+
    ?>
 </main>
 
-<?php //require_once '../static/footer.php'; ?>
+<?php require_once 'static/footer.php'; ?>
+</body>
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- typed js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- custom js -->
 
 <script src="public/script.js"></script>
-</body>
+
 
 </html>

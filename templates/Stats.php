@@ -1,65 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistics Page</title>
-</head>
-<body>
+<!-- bdw-project section design -->
+    <section class="bdw-project" id="stats">
+        <h2 class="heading">Les <span>Statistiques</span></h2>
 
-<h1>Statistics Page</h1>
+        <div class="bdw-project-container">
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project1.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>ENFANTS</h4>
+                    <p>Liste de chaque enfant et de son école actuelle</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
 
-<!-- Display Number of Instances -->
-<h2>Number of Instances for Selected Tables</h2>
-<p>Total Instances: <?= $statsData["instances"] ?></p>
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project2.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>ENFANTS</h4>
+                    <p>Liste des enfants avec le nom de la cantine où ils mangeront le 01/01/2024</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
 
-<!-- Display Children with Current School -->
-<h2>Children with Current School</h2>
-<ul>
-    <?php foreach ($statsData['child']['CWCS'] as $child): ?>
-        <li><?= $child['nom'] . ' ' . $child['prenom'] . ' - ' . $child['ecole_actuelle'] ?></li>
-    <?php endforeach; ?>
-</ul>
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project3.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>ENFANTS</h4>
+                    <p>Paires d’enfants ayant les mêmes nom et prénom, mais inscrits dans des écoles différentes.</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
 
-<!-- Display Children with Cantine for Date -->
-<h2>Children with Cantine for Date (01/01/2024)</h2>
-<ul>
-    <?php foreach ($statsData['child']['CWCFD'] as $child): ?>
-        <li><?= $child['nom'] . ' ' . $child['prenom'] . ' - ' . $child['cantine'] ?></li>
-    <?php endforeach; ?>
-</ul>
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project4.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>Top-3</h4>
+                    <p>Top-3 des départements ayant le plus de communes</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
 
-<!-- Display Children with Same Name in Different Schools -->
-<h2>Children with Same Name in Different Schools</h2>
-<ul>
-    <?php foreach ($statsData['child']['CWSNIDS'] as $child): ?>
-        <li><?= $child['nom'] . ' ' . $child['prenom'] . ' - School A: ' . $child['ecole_A'] . ', School B: ' . $child['ecole_B'] ?></li>
-    <?php endforeach; ?>
-</ul>
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project5.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>Top-3</h4>
+                    <p>Top-3 des services les plus demandés (par les citoyen·ne·s)</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
 
-<!-- Display Top 3 Departements with Most Communes -->
-<h2>Top 3 Departements with Most Communes</h2>
-<ol>
-    <?php foreach ($statsData['top3']['T3DWMC'] as $departement): ?>
-        <li><?= $departement['nom'] . ' - Number of Communes: ' . $departement['nombre_communes'] ?></li>
-    <?php endforeach; ?>
-</ol>
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project6.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>Top-3</h4>
+                    <p>Top-3 des services les plus proposés (par les communes).</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
 
-<!-- Display Top 3 Most Requested Services -->
-<h2>Top 3 Most Requested Services</h2>
-<ol>
-    <?php foreach ($statsData['top3']['T3MRS'] as $service): ?>
-        <li><?= $service['Libelle'] . ' - Number of Requests: ' . $service['nombre_demandes'] ?></li>
-    <?php endforeach; ?>
-</ol>
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project7.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>Top-3</h4>
+                    <p>Top-3 des communes qui réalisent le plus d’unions.</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
 
-<!-- Display Top 3 Communes with Most Unions -->
-<h2>Top 3 Communes with Most Unions</h2>
-<ol>
-    <?php foreach ($statsData['top3']['T3CWMU'] as $commune): ?>
-        <li><?= $commune['nom'] . ' - Number of Unions: ' . $commune['nombre_unions'] ?></li>
-    <?php endforeach; ?>
-</ol>
-
-</body>
-</html>
+            <div class="bdw-project-box">
+                <img src="assets/images/bdw-project8.jpg" alt="">
+                <div class="bdw-project-layer">
+                    <h4>Instance</h4>
+                    <p>Nombre d’instances pour 3 tables de votre choix.</p>
+                    <a href="#"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>

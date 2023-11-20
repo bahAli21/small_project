@@ -38,15 +38,26 @@ class Stats
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getChildrenWithCantineForDate(string $date): array {
-        $sql = "SELECT enfant.nom, enfant.prenom, cantine.nom AS cantine
-                FROM Enfant
-                JOIN Repas ON enfant.idEnfant = mange.idEnfant AND repas.idRepas = mange.idRepas
-                JOIN Cantine ON repas.idCant = cantine.idCant
-                WHERE repas.dateR = :date";
+    public function getChildrenWithCantineForDate(): array {
+        $sql = "SELECT
+                    enfant.nom AS NomEnfant,
+                    enfant.prenom AS PrenomEnfant,
+                    cantine.nom AS NomCantine
+                FROM
+                    enfant
+                JOIN
+                    fréquente ON enfant.idEnfant = fréquente.idEnfant
+                JOIN
+                    cantine ON fréquente.idCant = cantine.idCant
+                JOIN
+                    mange ON enfant.idEnfant = mange.idEnfant
+                JOIN
+                    repas ON mange.idRepas = repas.idRepas
+                WHERE
+                    repas.dateR = '2023-01-01'";
 
         $statement = $this->conn->prepare($sql);
-        $statement->bindParam(':date', $date, PDO::PARAM_STR);
+        //$statement->bindParam(':date', $date, PDO::PARAM_STR);
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -65,8 +76,8 @@ class Stats
     public function getTop3DepartementsWithMostCommunes(): array {
         $sql = "SELECT departement.nom, COUNT(commune.idComm) AS nombre_communes
                 FROM departement
-                LEFT JOIN commune ON departement.idDept = commune.idDept
-                GROUP BY departement.idDept
+                LEFT JOIN commune ON departement.codeINSEED = commune.codeINSEED
+                GROUP BY departement.codeINSEED
                 ORDER BY nombre_communes DESC
                 LIMIT 3";
 
@@ -76,10 +87,10 @@ class Stats
     }
 
     public function getTop3MostRequestedServices(): array {
-        $sql = "SELECT service.Libelle, COUNT(demande.idService) AS nombre_demandes
+        $sql = "SELECT service.Libelle, COUNT(demand.idDemande) AS nombre_demandes
                 FROM service
-                LEFT JOIN demande ON Service.idService = demande.idService
-                GROUP BY service.idService
+                LEFT JOIN demand ON Service.idDemande = demand.idDemande
+                GROUP BY service.idDemande
                 ORDER BY nombre_demandes DESC
                 LIMIT 3";
 
@@ -89,7 +100,7 @@ class Stats
     }
 
     public function getTop3MostOfferedServices(): array {
-        $sql = "SELECT service.Libelle, COUNT(sropose.idService) AS nombre_propositions
+        $sql = "SELECT service.Libelle, COUNT(propose.idService) AS nombre_propositions
                 FROM service
                 LEFT JOIN propose ON service.idService = propose.idService
                 GROUP BY service.idService

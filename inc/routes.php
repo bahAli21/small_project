@@ -14,13 +14,7 @@ $routes = [
                         "template" => "Stats"
              ],
 
-             "trialPeriod" => [
-
-                        "controller" => "trialPeriodController",
-                        "template" => "trialPeriod"
-             ],
-
-             "addService" => [
+             "Services" => [
 
                         "controller" => "addServiceController",
                         "template" => "addService"
