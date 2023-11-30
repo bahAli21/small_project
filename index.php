@@ -1,7 +1,7 @@
 <?php
 require 'inc/Database.php';
 require 'inc/routes.php';
-//require 'models/Stats.php';
+require 'models/Stats.php';
 
  ?>
 
@@ -29,12 +29,12 @@ require 'inc/routes.php';
     $page = isset($_GET['page']) ? $_GET['page'] : 'Home' ;
 
     if(isset($routes[$page])) {
-      //$controller = $routes[$pageName]['controller'];
+      $controller = $routes[$page]['controller'];
       $template = $routes[$page]['template'];
 
-      //require ('controllers/'.$controller.'.php');
+      require ('controllers/'.$controller.'.php');
       require ('templates/'.$template.'.php');
-      require ('templates/popup.php');
+      require 'templates/popup.php';
     }
 
    ?>

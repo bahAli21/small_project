@@ -16,7 +16,7 @@ $routes = [
 
              "Services" => [
 
-                        "controller" => "addServiceController",
-                        "template" => "addService"
+                        "controller" => "serviceController",
+                        "template" => "services"
              ],
 ];

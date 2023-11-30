@@ -249,7 +249,7 @@ span {
 
 .bdw-project-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     align-items: center;
     gap: 2.5rem;
 }
@@ -292,12 +292,12 @@ span {
     transform: translateY(0);
 }
 
-.bdw-project-layer h4 {
-    font-size: 3rem;
+.bdw-project-layer h6 {
+    font-size: 1rem;
 }
 
 .bdw-project-layer p {
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin: .3rem 0 1rem;
 }
 

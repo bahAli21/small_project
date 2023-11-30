@@ -16,6 +16,14 @@
     --second-bg-color: #323946;
     --text-color: #fff;
     --main-color: #0ef;
+
+
+    --border-radius: 2rem;
+    --card-border-radius: 1rem;
+
+    --primary-color-hue: 252;
+    --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
+    --color-danger: hsl(0, 95%, 60%);
 }
 
 *::selection {
