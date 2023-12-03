@@ -33,7 +33,6 @@ class StatsController
     }
 }
 
-// Assuming $statsData is still used later in your application
 $stats = new Stats();
 $statsController = new StatsController($stats);
 $statsData = $statsController->Data;

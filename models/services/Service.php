@@ -1,6 +1,6 @@
 <?php
 
-class Service
+class Services
 {
     private $conn;
     public function __construct() {
@@ -42,34 +42,20 @@ class Service
       }
   }
 
-  public function insertionInProposeTab($idC, $idService): bool {
+  public function getCommuneByID($nomC): int {
+    $sql = "SELECT idC
+            FROM commune
+            WHERE nomC = ?" ;
+    $statement = $this->conn->prepare($sql);
+    $statement->execute([$nomC]);
+
+    return $statement->fetch(PDO::FETCH_ASSOC)['idC'];
+  }
+
+ public function getServiceID() {
     try {
-        $sql = "INSERT INTO propose (idC, idService) VALUES (?, ?)";
-        $statement = $this->conn->prepare($sql);
-
-        $result = $statement->execute([$idC, $idService]);
-
-        return $result;
-    } catch (PDOException $e) {
-        error_log("Erreur d'insertion : " . $e->getMessage());
-
-        return false;
-    }
- }
-
- public function getServiceID($service) {
-    try {
-        $sql = "SELECT idService FROM Service WHERE libelle = ?";
-        $statement = $this->conn->prepare($sql);
-        $statement->execute([$service]);
-
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-
-        if ($result) {
-            return $result["idService"];
-        } else {
-            return false;
-        }
+      $idService = $this->conn->lastInsertId();
+      return $idService;
     } catch (PDOException $e) {
         error_log("Erreur lors de la récupération de l'ID du service : " . $e->getMessage());
 
@@ -77,10 +63,27 @@ class Service
     }
  }
 
+ public function insertionInProposeTab($nomC): bool {
+   try {
+       $sql = "INSERT INTO propose (idC, idService) VALUES (?, ?)";
+       $statement = $this->conn->prepare($sql);
+       $idService = $this->getServiceID();
+       $idC = $this->getCommuneByID($nomC);
+       $result = $statement->execute([$idC, $idService]);
+
+       return $result;
+   } catch (PDOException $e) {
+       error_log("Erreur d'insertion : " . $e->getMessage());
+
+       return false;
+   }
+}
+
  public function getAllServices(): array {
-   $sql = "SELECT *
-           FROM service
-           ORDER BY idService ASC" ;
+   $sql = "SELECT s.*, c.nomC
+            FROM service s
+            LEFT JOIN propose p ON s.idService = p.idService
+            LEFT JOIN commune c ON p.idC = c.idC" ;
    $statement = $this->conn->prepare($sql);
    $statement->execute();
 

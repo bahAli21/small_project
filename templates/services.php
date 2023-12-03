@@ -7,14 +7,14 @@
                 <i class='bx bxs-paint'></i>
                 <h3>Ajouter un service</h3>
                 <p> nous avons créer une page pour ajouter un nouveau service.</p>
-                <a href="#" class="btn">Let's see</a>
+                <a href="index.php?page=Form" class="btn add-s">Let's see</a>
             </div>
 
             <div class="services-box">
                 <i class='bx bx-code-alt'></i>
                 <h3>Liste de nos services</h3>
                 <p>La liste de tous les services avec leurs informations.</p>
-                <a href="#" class="btn">Let's see</a>
+                <a href="index.php?page=AllServices" class="btn">Let's see</a>
             </div>
 
             <div class="services-box">

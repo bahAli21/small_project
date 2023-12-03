@@ -2,7 +2,7 @@
 require 'inc/Database.php';
 require 'inc/routes.php';
 require 'models/Stats.php';
-
+require 'models/services/Service.php';
  ?>
 
 <!DOCTYPE html>
@@ -25,20 +25,25 @@ require 'models/Stats.php';
 <?php require_once 'static/header.php'; ?>
 
 <main>
-  <?php
-    $page = isset($_GET['page']) ? $_GET['page'] : 'Home' ;
+       <?php
+       $page = isset($_GET['page']) ? $_GET['page'] : 'Home';
 
-    if(isset($routes[$page])) {
-      $controller = $routes[$page]['controller'];
-      $template = $routes[$page]['template'];
+       if (isset($routes[$page])) {
+           if ($page == "Services" && isset($_GET['dir'])) {
+               $dir = $_GET['dir'];
+               $controller = $routes[$page][$dir]['controller'];
+               $template = $routes[$page][$dir]['template'];
+           } else {
+               $controller = $routes[$page]['controller'];
+               $template = $routes[$page]['template'];
+           }
 
-      require ('controllers/'.$controller.'.php');
-      require ('templates/'.$template.'.php');
-      require 'templates/popup.php';
-    }
-
-   ?>
-</main>
+           require ('controllers/'.$controller.'.php');
+           require ('templates/'.$template.'.php');
+           require 'templates/popup.php';
+       }
+       ?>
+   </main>
 
 <?php require_once 'static/footer.php'; ?>
 </body>

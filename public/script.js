@@ -1,4 +1,5 @@
 //BAH MAMADOU
+
 document.addEventListener("DOMContentLoaded", function() {
         const popup = document.querySelector('.popup');
         const links = document.querySelectorAll('.bx-link-external');

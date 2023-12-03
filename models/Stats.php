@@ -55,66 +55,71 @@ class Stats
     }
 
     public function getChildrenWithSameNameInDifferentSchools(): array {
-        $sql = "SELECT DISTINCT p1.nomE, p1.prenom
-                FROM enfant p1 ,enfant p2
-                WHERE p1.nomE =p2.nomE AND p1.prenom =p2.prenom AND p1.idEcole !=p2.idEcole";
+    $sql = "SELECT DISTINCT p1.nomE, p1.prenom
+            FROM enfant p1, enfant p2
+            WHERE p1.nomE = p2.nomE AND p1.prenom = p2.prenom AND p1.idEcole != p2.idEcole";
 
-        $statement = $this->conn->prepare($sql);
-
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
+    $statement = $this->conn->prepare($sql);
+    // Pas de paramètres dans cette requête, donc pas besoin de bindParam
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
 
     public function getTop3DepartementsWithMostCommunes(): array {
-        $sql = "SELECT Departement.nomD, COUNT(Commune.CodeINSEED) as nb
-                FROM Departement
-                LEFT OUTER JOIN Commune
-                ON Commune.CodeINSEED=Departement.CodeINSEED
-                GROUP BY Departement.CodeINSEED
-                ORDER BY nb DESC LIMIT 3";
+    $sql = "SELECT Departement.nomD, COUNT(Commune.CodeINSEED) as nb
+            FROM Departement
+            LEFT OUTER JOIN Commune ON Commune.CodeINSEED = Departement.CodeINSEED
+            GROUP BY Departement.CodeINSEED
+            ORDER BY nb DESC LIMIT 3";
 
-        $statement = $this->conn->prepare($sql);
+    $statement = $this->conn->prepare($sql);
+    // Pas de paramètres dans cette requête, donc pas besoin de bindParam
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
 
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+      public function getTop3MostRequestedServices(): array {
+      $sql = "SELECT service.libelle, COUNT(demande.idService) as nb
+              FROM demande
+              LEFT OUTER JOIN service ON demande.idService = service.idService
+              GROUP BY demande.idService
+              ORDER BY nb DESC
+              LIMIT 3";
+
+      $statement = $this->conn->prepare($sql);
+      $statement->execute();
+      return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getTop3MostRequestedServices(): array {
-        $sql = "SELECT service.libéllé, COUNT(demande.idService) as nb
-                FROM demande
-                LEFT OUTER JOIN propose ON demande.idService = propose.idService
-                LEFT OUTER JOIN service ON demande.idService = service.idService
-                GROUP BY demande.idService, service.libéllé
-                ORDER BY nb DESC
-                LIMIT 3";
-
-        $statement = $this->conn->prepare($sql);
-
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
 
     public function getTop3MostOfferedServices() {
-        // $sql = "SELECT service.Libelle, COUNT(propose.idService) AS nombre_propositions
-        //         FROM service
-        //         LEFT JOIN propose ON service.idService = propose.idService
-        //         GROUP BY service.idService
-        //         ORDER BY nombre_propositions DESC
-        //         LIMIT 3";
-        //
-        // $statement = $this->conn->query($sql);
-        //
-        // return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
+    $sql = "SELECT service.libelle, COUNT(propose.idService) as nb
+            FROM propose
+            LEFT OUTER JOIN demande ON demande.idService = propose.idService
+            LEFT OUTER JOIN service ON demande.idService = service.idService
+            GROUP BY propose.idService
+            ORDER BY nb DESC
+            LIMIT 3";
+
+    $statement = $this->conn->prepare($sql);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+   }
+
 
     public function getTop3CommunesWithMostUnions() {
-        // $sql = "SELECT commune.nom, COUNT(unionCivile.idLieu) AS nombre_unions
-        //         FROM commune
-        //         LEFT JOIN unionCivile ON commune.idComm = unionCivile.idLieu
-        //         GROUP BY commune.idComm
-        //         ORDER BY nombre_unions DESC
-        //         LIMIT 3";
-        //
-        // $statement = $this->conn->query($sql);
-        //
-        // return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT c.idC, c.nomC, COUNT(u.idUnion) AS NombreUnions
+                FROM `commune` c
+                JOIN `union` u ON c.idC = u.id_Comm
+                GROUP BY c.idC, c.nomC
+                ORDER BY NombreUnions DESC
+                LIMIT 3
+                ";
+
+        $statement = $this->conn->query($sql);
+           $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }

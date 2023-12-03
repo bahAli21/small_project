@@ -14,12 +14,14 @@
         <h3>Présentation du Projet<span class="animate scroll" style="--i:3;"></span></h3>
         <p>
           <p class="default-txt">
-            Bienvenue sur notre site, réalisé en binôme en PHP orienté objet avec l'architecture MVC (Modèle-Vue-Contrôleur). Il s'agit d'un projet de base de données web visant à faciliter la navigation sur notre site. Nous avons structuré notre code en suivant les principes de l'architecture MVC,
-               assurant ainsi une séparation claire entre la logique métier, la présentation et le contrôle des données.
+            Bienvenue sur notre plateforme en ligne, fruit du travail acharné et de la collaboration harmonieuse de notre équipe de développement,
+             composée de moi-même, BAH Mamadou, et de mon binôme, Aden.
            <span class="animate scroll" style="--i:4;"></span>
          </p>
           <p class="full-txt">
-           la suite de la presentation
+           Notre projet s'inscrit dans le cadre d'un cours dirigé par le professeur Fabien Duchateau. L'objectif était de concevoir et de mettre en œuvre un site web basé sur une architecture PHP orientée objet, en suivant le modèle MVC (Modèle-Vue-Contrôleur).
+           Cette approche nous a permis d'organiser efficacement notre code, de séparer les préoccupations et d'assurer une évolutivité plus aisée.
+           Ce projet a été une aventure enrichissante, nous permettant d'approfondir nos connaissances en développement web et de mettre en pratique les concepts appris en cours.
           <span class="animate scroll" style="--i:4;"></span>
          </p>
             <span class="animate scroll" style="--i:4;"></span>

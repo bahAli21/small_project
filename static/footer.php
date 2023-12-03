@@ -5,6 +5,7 @@
         </div>
 
         <div class="footer-iconTop">
-            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+            <a href="https://perso.liris.cnrs.fr/fabien.duchateau/BDW/"><i class='bx bx-up-arrow-alt'></i></a>
+            <a href="index.php?page=Remerciement">GO</a>
         </div>
     </footer>

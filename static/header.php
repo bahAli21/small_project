@@ -6,7 +6,7 @@
 
         <nav class="navbar">
             <a href="index.php?page=Home">Home</a>
-            <a href="index.php?page=Services">Services</a>
+            <a href="index.php?page=Services&dir=one">Services</a>
             <a href="index.php?page=Stats">Stats</a>
         </nav>
     </header>

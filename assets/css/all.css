@@ -1,4 +1,28 @@
 
+
+
+
+.scrollableDiv {
+    position: absolute;
+    top: 28%;
+    left: 25%;
+    width: 600px;
+    height: 300px;
+    overflow-y: scroll; /* Active la barre de défilement vertical */
+    border: 2px solid #0ef;
+    text-align: center;
+}
+
+.scrollableDiv .back {
+  position: absolute;
+   top: 0;
+   left: 5px;
+   font-weight: 500;
+   font-size: 1.9rem;
+   color: #FF0000;
+   cursor: pointer;
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -316,32 +340,32 @@ span {
     color: var(--second-bg-color);
 }
 
-.contact {
+.myForm {
     min-height: auto;
     padding-bottom: 7rem;
 }
 
-.contact h2 {
+.myForm h2 {
     margin-bottom: 3rem;
 }
 
-.contact form {
-    max-width: 70rem;
+.myForm form {
+    max-width: 50rem;
     margin: 1rem auto;
     text-align: center;
     margin-bottom: 3rem;
 }
 
-.contact form .input-box {
+.myForm form .input-box {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.contact form .input-box input,
-.contact form textarea {
+.myForm form .input-box input,
+.myForm form textarea {
     width: 100%;
-    padding: 1.5rem;
+    padding: 1.2rem;
     font-size: 1.6rem;
     color: var(--text-color);
     background: var(--second-bg-color);
@@ -349,16 +373,44 @@ span {
     margin: .7rem 0;
 }
 
-.contact form .input-box input {
-    width: 49%;
+.myForm form .input-box input {
+    width: 40%;
 }
 
-.contact form textarea {
-    resize: none;
+.myForm form .input-box input:focus {
+    border: 1px solid var(--main-color);
 }
 
-.contact form .btn {
-    margin-top: 2rem;
+.myForm form .input-box label {
+  font-size: 1.6rem;
+}
+
+.myForm form .radio {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 1.6rem;
+  margin: 15px;
+}
+
+.input-box select {
+  width: 50%;
+  height: 30px;
+  border-radius: 6rem;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.input-box h5 {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+
+.myForm form .btn {
+    margin-top: 5rem;
     cursor: pointer;
 }
 
@@ -371,7 +423,7 @@ span {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 2rem 9%;
+    padding: .8rem 4%;
     background: var(--bg-color);
     z-index: 100;
 }
@@ -493,7 +545,7 @@ span {
         font-size: 50%;
     }
 
-    .contact form .input-box input {
+    .myForm form .input-box input {
         width: 100%;
     }
 
